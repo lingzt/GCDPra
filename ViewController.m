@@ -27,6 +27,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self firstTest];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self secondTest];
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self thirdTest];
+    
+}
+
+- (void)firstTest {
     NSLog(@"=================1");
     dispatch_async(dispatch_get_main_queue(), ^{
         NSLog(@"=================2");
@@ -34,7 +48,7 @@
     NSLog(@"=================3");
 }
 
--(void)viewWillAppear:(BOOL)animated{
+- (void)secondTest {
     NSLog(@"ViewWillAppear=============");
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSLog(@"=================4");
@@ -43,11 +57,11 @@
         });
         NSLog(@"=================6");
     });
+    
     NSLog(@"==========Main Thread Blocked");
-
 }
 
--(void)viewDidAppear:(BOOL)animated{
+- (void)thirdTest {
     NSLog(@"ViewDidAppear=============");
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSLog(@"=================7");
@@ -57,11 +71,8 @@
         NSLog(@"=================9");
     });
     
-    
-    
-    
-    
 }
+
 
 
 

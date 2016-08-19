@@ -6,6 +6,17 @@
 //  Copyright © 2016 Detroit Labs. All rights reserved.
 //
 
+/*  to delay the process.
+        for (int i = 0; i < 10001; i++) {
+        }
+*/
+
+/* while (1) is a infinite loop.
+    while (1) {
+    }
+*/
+
+
 #import "ViewController.h"
 
 @interface ViewController ()
@@ -18,9 +29,6 @@
     [super viewDidLoad];
     NSLog(@"=================1");
     dispatch_async(dispatch_get_main_queue(), ^{
-        //to delay the process.
-        for (int i = 0; i < 5001; i++) {
-        }
         NSLog(@"=================2");
     });
     NSLog(@"=================3");
@@ -36,9 +44,7 @@
         NSLog(@"=================6");
     });
     NSLog(@"==========Main Thread Blocked");
-//    while (1) {
-//    }
-    NSLog(@"========5==Main Thread Blocked, if uncomment the while loop");
+
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -50,7 +56,28 @@
         });
         NSLog(@"=================9");
     });
+    
+    
+    
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - (IBAction)crashTheMainThread:(id)sender {
     NSLog(@"Button pressed");
